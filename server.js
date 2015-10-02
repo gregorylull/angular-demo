@@ -5,7 +5,7 @@
    var express = require('express');
    var app = express();
 
-   // config
+   // configuration
    var port = process.env.PORT || 5000;
 
    // middle

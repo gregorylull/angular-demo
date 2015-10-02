@@ -22,3 +22,18 @@
   routes.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 })();
+
+//
+(function () {
+  'use strict';
+
+  console.log('main module load');
+
+})();
+
+(function () {
+  'use strict';
+
+  console.log('main directive loaded');
+  
+})();
