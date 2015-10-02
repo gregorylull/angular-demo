@@ -1,0 +1,27 @@
+{
+  "name": "phq9",
+  "version": "0.0.0",
+  "authors": [
+    "gregorylull <gregorylull@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-bootstrap": "~0.13.4",
+    "angular-ui-router": "~0.2.15"
+  }
+}
