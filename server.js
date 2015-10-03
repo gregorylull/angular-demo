@@ -7,6 +7,7 @@
 
    // configuration
    var port = process.env.PORT || 5000;
+   var questionsAndAnswers = require('./data.js');
 
    // middle
    var router = express.Router();
@@ -18,12 +19,16 @@
    app.use(express.static('bower_components'));
    app.use(express.static('public'));
 
-   // simple routes
+   // index
    app.get('/', function (request, response) {
-    console.log('listening on port')
-    res.sendFile('public/index.html');
+    response.sendFile('public/index.html');
    });
 
+
+  // data
+  app.get('/api/questions', function (request, response) {
+    response.send(questionsAndAnswers);
+  });
 
    // start application
    app.listen(port);

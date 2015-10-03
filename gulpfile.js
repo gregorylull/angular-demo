@@ -24,6 +24,8 @@
   paths.scripts = [
       'public/*module.js',
       'public/**/*module.js',
+      'public/**/*service.js',
+      'public/**/*controller.js',
       'public/**/*directive.js'
     ];
 

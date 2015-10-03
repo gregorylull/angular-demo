@@ -3,10 +3,12 @@
 
   console.log('initial index module load');
 
-  angular.module('phq9', ['ui.router'])
+  var myDependencies = ['phq9.main'];
+
+  angular.module('phq9', ['ui.router'].concat(myDependencies))
   .config(routes);
 
-  // 
+  // route
   function routes ($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/');
@@ -14,7 +16,7 @@
     $stateProvider
       .state('index', {
         url: "/",
-        template: '<h1>state: index : /</h1>'
+        template: '<h1>state: index : /</h1><div show-questions></div>'
       });
   }
 
