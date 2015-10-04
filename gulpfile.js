@@ -27,7 +27,11 @@
       'public/**/*module.js',
       'public/**/*service.js',
       'public/**/*controller.js',
-      'public/**/*directive.js'
+      'public/**/*directive.js',
+      'public/components/**/*module.js',
+      'public/components/**/*service.js',
+      'public/components/**/*controller.js',
+      'public/components/**/*directive.js'
     ];
 
   // javascript tasks

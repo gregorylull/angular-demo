@@ -1,23 +1,37 @@
 (function () {
   'use strict';
 
-  console.log('initial index module loaded');
+  // external vendor dependencies 
+  var vendors = [
+    'ui.router'
+  ];
 
-  var myDependencies = ['phq9.main'];
+  // my dependencies
+  var myDep = [
+    'phq9.header'
+    // 'phq9.main'
+  ];
 
-  angular.module('phq9', ['ui.router'].concat(myDependencies))
-  .config(routes);
+  angular
+  .module('phq9', vendors.concat(myDep))
+  .config(routes)
+  .constant('PP', {
+    'c' : 'components/'
+  });
 
   // route
   function routes ($stateProvider, $urlRouterProvider) {
+
 
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
       .state('index', {
         url: "/",
-        template: '<h1>state: index : /</h1><div show-questions></div>'
+        template: "<div phq9-header>should be header</div>"
       });
+
+    console.log('initial routes loaded');
   }
 
   // works with minifier
