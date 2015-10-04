@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  console.log('initial index module load');
+  console.log('initial index module loaded');
 
   var myDependencies = ['phq9.main'];
 
@@ -74,6 +74,6 @@
 (function () {
   'use strict';
 
-  console.log('main directive loaded');
+  console.log('main directive loadeddddd');
   
 })();

@@ -17,6 +17,7 @@
   var autoprefixer = require('gulp-autoprefixer');
   var concat = require('gulp-concat');
   var nodemon = require('gulp-nodemon');
+  var browserSync = require('browser-sync').create();
 
   // initial config
   // paths
@@ -33,12 +34,17 @@
   gulp.task("js", function () {
     return gulp.src(paths.scripts)
       .pipe(concat('app.js'))
-      .pipe(gulp.dest('public/build/js'));
+      .pipe(gulp.dest('public/build/js'))
+      .pipe(browserSync.reload({stream: true}));
   });
 
   gulp.task('nodemon', function (cb) {
     var called = false;
-    return nodemon({script: 'server.js'}).on('start', function () {
+    return nodemon({
+      script: 'server.js',
+      ignore: ['public/']
+    })
+    .on('start', function () {
       if (!called) {
         called = true;
         cb();
@@ -46,9 +52,20 @@
     });
   });
 
+  // gulp.task('js-watch', ['js'], browserSync.reload);
 
-  gulp.task('default', ['js', 'nodemon'], function () {
+  // //live reload of browser page upon file modification
+  gulp.task('browser-sync', function () {
+
+    browserSync.init({
+      proxy: 'localhost:5000'
+    });
+
     gulp.watch(paths.scripts, ['js']);
+  });
+
+  gulp.task('default', ['js', 'nodemon', 'browser-sync'], function () {
+    gulp.watch('public/build/**/*.*').on('change', browserSync.reload);
   });
 
 })();

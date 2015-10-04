@@ -1,6 +1,6 @@
 (function () {
   'use strict';
 
-  console.log('main directive loaded');
+  console.log('main directive loadeddddd');
   
 })();
