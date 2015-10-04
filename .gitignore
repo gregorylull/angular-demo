@@ -1,2 +1,6 @@
+# vendors
 bower_components
 node_modules
+
+# build files
+public/build

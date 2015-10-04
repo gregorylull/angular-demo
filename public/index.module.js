@@ -14,14 +14,10 @@
 
   angular
   .module('phq9', vendors.concat(myDep))
-  .config(routes)
-  .constant('PP', {
-    'c' : 'components/'
-  });
+  .config(routes);
 
   // route
   function routes ($stateProvider, $urlRouterProvider) {
-
 
     $urlRouterProvider.otherwise('/');
 
