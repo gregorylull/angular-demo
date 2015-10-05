@@ -18,9 +18,12 @@
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.0.2",
     "gulp-concat": "^2.6.0",
-    "gulp-sass": "^2.0.4",
-    "node" : "4.1.1"
+    "gulp-sass": "^2.0.4"
   },
+  "engines": {
+    "node" : "4.0.0",
+    "npm" : "2.14.x"
+    },
   "devDependencies": {
     "browser-sync": "^2.9.8",
     "gulp-concat-css": "^2.2.0",
