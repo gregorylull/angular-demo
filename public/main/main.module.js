@@ -5,22 +5,11 @@
   console.log('main module load');
 
   angular.module('phq9.main', [])
-  .directive('showQuestions', function () {
-    return {
-      restrict: 'A',
-      templateUrl: 'main/main.html',
-      scope: {},
-      controller: showQuestionsCtrl,
-      controllerAs: 'questionsCtrl'
-    }
-  });
+  .config(route)
 
-  function showQuestionsCtrl (GetQuestions) {
-    this.data = {};
-    GetQuestions(this.data);
-    console.log('what is GetQuestions', GetQuestions);
+  function route ($stateProvider, $urlRouterProvider) {
   }
 
-  showQuestionsCtrl.$inject = ['GetQuestions']
+  route.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 })();

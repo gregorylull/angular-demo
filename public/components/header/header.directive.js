@@ -11,20 +11,8 @@
     return {
       restrict: 'A',
       templateUrl: PathU.getC('header.html'),
-      scope: {},
-      
-      controller: function () {
-        this.links = [
-          'Questionnaire',
-          'About'
-        ];
-      },
+      scope: {}
 
-      controllerAs: 'headerCtrl',
-
-      link: function (postScope, postElem, postAttrs) {
-
-      }
     }; // end directive definition object
 
   }); // end directive.phq9Header
