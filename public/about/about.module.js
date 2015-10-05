@@ -4,16 +4,19 @@
 
   console.log('main module load');
 
-  angular.module('phq9.questionnaire', [])
+  angular.module('phq9.about', [])
   .config(route)
 
   function route ($stateProvider, $urlRouterProvider) {
     $stateProvider
-    .state('phq9', {
-      url: '/phq9',
+    .state('about', {
+      url: '/about',
       views: {
-        '': {
-          templateUrl: "questionnaire/questionnaire.view.html"
+        "": {
+          templateUrl: "about/about.view.html"
+        },
+        "body@about": {
+          template: "Stay tuned..."
         }
       }
     })

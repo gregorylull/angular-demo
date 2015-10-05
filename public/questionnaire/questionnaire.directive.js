@@ -8,7 +8,8 @@
       restrict: 'A',
       scope: {},
       controller: showQuestionsCtrl,
-      controllerAs: 'questionsCtrl'
+      controllerAs: 'questionsCtrl',
+      templateUrl: 'questionnaire/questionnaire.html'
     }
   });
 

@@ -9,7 +9,10 @@
   // my dependencies
   var myDep = [
     'phq9.header',
-    'phq9.navbar'
+    'phq9.navbar',
+    'phq9.home',
+    'phq9.questionnaire',
+    'phq9.about'
   ];
 
   angular
@@ -20,29 +23,6 @@
   function routes ($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise('/');
-
-    $stateProvider
-      .state('home', {
-        url: "/",
-        views: {
-
-          "" : {
-            templateUrl: "main/main.html"
-          },
-
-          "header@home": {
-            template: "<div phq9-header>head</div>"
-          },
-
-          "navbar@home": {
-            template: "<div phq9-navbar>navbar</div>"
-          },
-
-          "body@home": {
-            template: "<div phq9-body>body</div>"
-          }
-        }
-      });
 
     console.log('initial routes loaded');
   }

@@ -10,8 +10,9 @@
       templateUrl: PathU.getC('navbar.html'),
       controller: function () {
         this.links = [
-          'Questionnaire',
-          'About This page'
+          ['Home', 'home'],
+          ['PHQ9 Questionnaire', 'phq9'],
+          ['About This page', 'about']
         ];
       },
 
