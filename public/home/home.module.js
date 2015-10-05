@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  console.log('main module load');
+  console.log('home module load');
 
   angular.module('phq9.home', [])
   .config(route)

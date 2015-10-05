@@ -14,10 +14,17 @@
   'use strict';
 
   var gulp = require('gulp');
-  var autoprefixer = require('gulp-autoprefixer');
-  var concat = require('gulp-concat');
-  var nodemon = require('gulp-nodemon');
+
+  // browser / server
   var browserSync = require('browser-sync').create();
+  var nodemon = require('gulp-nodemon');
+
+  // js
+  var concat = require('gulp-concat');
+
+  // css
+  var autoprefixer = require('gulp-autoprefixer');
+  var concatCSS = require('gulp-concat-css');
 
   // initial config
   // paths
@@ -40,6 +47,15 @@
     'public/**/*.html'
   ];
 
+  paths.css = [
+    'public/*.css',
+    'public/**/style.css'
+  ];
+
+/*-----------------------------------------------------------------------------
+    javascript tasks
+-----------------------------------------------------------------------------*/
+
   // javascript tasks
   gulp.task("js", function () {
     return gulp.src(paths.scripts)
@@ -48,6 +64,24 @@
       .pipe(browserSync.reload({stream: true}));
   });
 
+/*-----------------------------------------------------------------------------
+    CSS tasks
+-----------------------------------------------------------------------------*/
+
+  gulp.task('css', function () {
+    return gulp.src(paths.css)
+      .pipe(concatCSS('app.css'))
+      .pipe(gulp.dest('public/build/css'))
+      .pipe(browserSync.reload({stream: true}));
+  });
+
+/*-----------------------------------------------------------------------------
+  
+  live reload of browser page upon file modification
+    
+-----------------------------------------------------------------------------*/
+
+  // start backend server for serving files
   gulp.task('nodemon', function (cb) {
     var called = false;
     return nodemon({
@@ -62,9 +96,7 @@
     });
   });
 
-  // gulp.task('js-watch', ['js'], browserSync.reload);
-
-  // //live reload of browser page upon file modification
+  // initialize browser-sync
   gulp.task('browser-sync', function () {
 
     browserSync.init({
@@ -72,10 +104,15 @@
     });
 
     gulp.watch(paths.scripts, ['js']);
+    gulp.watch(paths.css, ['css'])
 
   });
 
-  gulp.task('default', ['js', 'nodemon', 'browser-sync'], function () {
+/*-----------------------------------------------------------------------------
+    Default
+-----------------------------------------------------------------------------*/
+
+  gulp.task('default', ['js', 'css', 'nodemon', 'browser-sync'], function () {
     gulp.watch('public/build/**/*.*').on('change', browserSync.reload);
     gulp.watch(paths.html).on('change', browserSync.reload);
   });

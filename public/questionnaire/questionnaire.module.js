@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  console.log('main module load');
+  console.log('questionnaire module load');
 
   angular.module('phq9.questionnaire', [])
   .config(route)
@@ -14,6 +14,9 @@
       views: {
         '': {
           templateUrl: "questionnaire/questionnaire.view.html"
+        },
+        'content@phq9': {
+          template: "<div data-question-answer></div>"
         }
       }
     })

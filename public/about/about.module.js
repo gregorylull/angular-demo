@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  console.log('main module load');
+  console.log('about module load');
 
   angular.module('phq9.about', [])
   .config(route)
