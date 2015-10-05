@@ -1,17 +1,15 @@
-//
 (function () {
+
   'use strict';
 
-  console.log('main module load');
-
-  angular.module('phq9.main', [])
+  angular.module('php9.questionnaire', [])
   .directive('showQuestions', function () {
     return {
       restrict: 'A',
-      templateUrl: 'main/main.html',
       scope: {},
       controller: showQuestionsCtrl,
-      controllerAs: 'questionsCtrl'
+      controllerAs: 'questionsCtrl',
+      templateUrl: 'questionnaire/questionnaire.html'
     }
   });
 

@@ -8,28 +8,21 @@
 
   // my dependencies
   var myDep = [
-    'phq9.header'
-    // 'phq9.main'
+    'phq9.header',
+    'phq9.navbar',
+    'phq9.home',
+    'phq9.questionnaire',
+    'phq9.about'
   ];
 
   angular
   .module('phq9', vendors.concat(myDep))
-  .config(routes)
-  .constant('PP', {
-    'c' : 'components/'
-  });
+  .config(routes);
 
   // route
   function routes ($stateProvider, $urlRouterProvider) {
 
-
     $urlRouterProvider.otherwise('/');
-
-    $stateProvider
-      .state('index', {
-        url: "/",
-        template: "<div phq9-header>should be header</div>"
-      });
 
     console.log('initial routes loaded');
   }
