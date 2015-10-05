@@ -1,3 +1,10 @@
+### How to run on local environment
+1. git clone this directory: `git clone https://github.com/gregorylull/angular-demo.git`
+2. install [node.js](https://nodejs.org/en/) through .dmg which comes with npm packaged. Or better yet install with [nvm](https://github.com/creationix/nvm) which has an easy interface for version control
+3. install [bower](http://bower.io/#install-bower) and run `bower install`
+4. run `npm install`
+5. run `npm start` (or run `gulp`)
+
 ### Overall flow of objectivies
 - setup dev environment: backend
   - node/express to serve files
