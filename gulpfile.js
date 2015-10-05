@@ -24,15 +24,21 @@
   var paths = {};
   paths.scripts = [
       'public/*module.js',
-      'public/**/*module.js',
-      'public/**/*service.js',
-      'public/**/*controller.js',
-      'public/**/*directive.js',
+      'public/services/**/*service.js',
       'public/components/**/*module.js',
       'public/components/**/*service.js',
       'public/components/**/*controller.js',
-      'public/components/**/*directive.js'
+      'public/components/**/*directive.js',
+      'public/**/*service.js',
+      'public/**/*module.js',
+      'public/**/*controller.js',
+      'public/**/*directive.js'
     ];
+
+  paths.html = [
+    'public/*.html',
+    'public/**/*.html'
+  ];
 
   // javascript tasks
   gulp.task("js", function () {
@@ -66,10 +72,12 @@
     });
 
     gulp.watch(paths.scripts, ['js']);
+
   });
 
   gulp.task('default', ['js', 'nodemon', 'browser-sync'], function () {
     gulp.watch('public/build/**/*.*').on('change', browserSync.reload);
+    gulp.watch(paths.html).on('change', browserSync.reload);
   });
 
 })();
