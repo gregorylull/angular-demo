@@ -112,6 +112,8 @@
     Default
 -----------------------------------------------------------------------------*/
 
+  gulp.task('production', ['js', 'css'])
+
   gulp.task('default', ['js', 'css', 'nodemon', 'browser-sync'], function () {
     gulp.watch('public/build/**/*.*').on('change', browserSync.reload);
     gulp.watch(paths.html).on('change', browserSync.reload);
