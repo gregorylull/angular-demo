@@ -3,7 +3,8 @@
 
   // external vendor dependencies 
   var vendors = [
-    'ui.router'
+    'ui.router',
+    'ui.bootstrap'
   ];
 
   // my dependencies

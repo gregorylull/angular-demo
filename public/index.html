@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <title>PHQ9 - G.L.</title>
 
+  <!-- for mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <!-- normalize -->
   <link rel="stylesheet" href="normalize-css/normalize.css">
 
@@ -16,6 +19,10 @@
   <!-- load vendor scripts -->
   <script src="angular/angular.min.js"></script>
   <script src="angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+
+  <!-- vendor css -->
+  <link rel="stylesheet" href="angular-bootstrap/ui-bootstrap-csp.css">
 
   <!-- my css -->
   <link rel="stylesheet" href="build/css/app.css">
@@ -28,8 +35,8 @@
   <div class="container">
     <div data-phq9-navbar></div>
     <div data-ui-view></div>
+    <div class="footer"></div>
   </div>
-
 
 </body>
   <!-- load app scripts -->

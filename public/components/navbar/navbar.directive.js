@@ -11,8 +11,8 @@
       controller: function () {
         this.links = [
           ['Home', 'home'],
-          ['PHQ9 Questionnaire', 'phq9'],
-          ['About This page', 'about']
+          ['PHQ9 Questionnaire', 'phq9']
+          // ['About This page', 'about']
         ];
       },
 

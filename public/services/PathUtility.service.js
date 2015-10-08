@@ -1,7 +1,6 @@
 (function () {
   'use strict';
 
-
   angular.module('phq9')
   .provider('PathU', function () {
     var paths = {

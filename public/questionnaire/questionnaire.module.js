@@ -4,7 +4,7 @@
 
   console.log('questionnaire module load');
 
-  angular.module('phq9.questionnaire', [])
+  angular.module('phq9.questionnaire', ['ui.bootstrap'])
   .config(route)
 
   function route ($stateProvider, $urlRouterProvider) {
@@ -15,7 +15,8 @@
         '': {
           templateUrl: "questionnaire/questionnaire.view.html"
         },
-        'content@phq9': {
+        'form@phq9': {
+          // data-question-answer is registered as a directive in questionnaire.form.directive.js
           template: "<div data-question-answer></div>"
         }
       }

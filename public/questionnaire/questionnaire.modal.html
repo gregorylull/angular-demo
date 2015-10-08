@@ -1,0 +1,19 @@
+<div class="modal-header">
+  These are the available doctors in your area, please select one if you are interested.
+</div>
+
+<div class="modal-body">
+  <ul>
+    <li ng-repeat="item in dmInstCtrl.items">
+      <a href="" ng-click="$event.preventDefault(); dmInstCtrl.selected.item = item">{{item.n}}</a>
+    </li>
+  </ul>
+  <p ng-show="dmInstCtrl.selected.item">
+    You have selected {{dmInstCtrl.selected.item.n}}, phone number: {{dmInstCtrl.selected.item.p}}
+  </p>
+</div>
+
+<div class="modal-footer">
+  <button type="button" ng-click="dmInstCtrl.ok()">OK</button>
+  <button type="button" ng-click="dmInstCtrl.cancel()">Cancel</button>
+</div>

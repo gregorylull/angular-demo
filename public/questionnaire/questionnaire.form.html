@@ -1,0 +1,51 @@
+<h4>Answer these questions please</h4>
+<form name="phq9Form" ng-submit="qCtrl.submit($form, qCtrl.sumTotal)">
+  
+  <div class="question-list">
+    <!-- each question-->
+    <div class="row question-answers-block" ng-repeat="question in qCtrl.data.questions">
+      <!-- question on left-->
+      <div class="col-md-6 question-block">
+        <p>
+          {{ ::question }}
+        </p>
+      </div>
+      
+      <!-- answer on right -->
+      <div class="col-md-6 answers-block">
+        <div class="row answer-single" ng-repeat="answer in qCtrl.data.answers">
+          <label>
+            <input
+              required
+              type="radio"
+              name="{{ ::('answer' + $parent.$index)}}"
+              ng-model="qCtrl.formData['answer' + $parent.$index]"
+              ng-value="{{ ::answer[1] }}"
+              ng-change="qCtrl.processForm(qCtrl.formData)"
+            >
+
+            {{ ::answer[0]}}
+
+          </label>
+        </div> <!-- / ng repeat of answer-single-->
+      </div> <!-- /.answers-block -->
+
+    </div> <!-- /.question-block -->
+  </div> <!-- /.question-list -->
+
+  <!-- tally and display score-->
+  <p>
+    Total: {{qCtrl.sumTotal}} / {{ ::(qCtrl.data.questions.length * 3)}}
+  </p>
+  <p>
+    result: {{qCtrl.severity}}
+  </p>
+  <h5>Depression Severity: 0-4 none, 5-9 mild, 10-14 moderate, 15-19 moderately severe, 20-27 severe.</h5>
+
+
+  <!-- submit score -->
+  <input type="submit" id="submit" value="Check for support in your area">
+
+  <div data-question-modal parent="qCtrl.modal"></div>
+
+</form>
