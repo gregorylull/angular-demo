@@ -20,10 +20,7 @@
       scope: {},
       controller: QuestionCtrl,
       controllerAs: 'qCtrl',
-      templateUrl: 'questionnaire/questionnaire.form.html',
-      link: function (scope, el, attr, qCtrl) {
-
-      }
+      templateUrl: 'questionnaire/questionnaire.form.html'
     }
   });
 

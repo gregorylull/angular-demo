@@ -46,34 +46,32 @@
   </div> <!-- /.question-list -->
 
   <!-- submit score -->
-  <input type="submit" id="submit" value="Check for support in your area">
+  <button ng-click="$event.preventDefault(); qCtrl.selectRandomAnswers()"> Random </button>
+  <input ng-show="qCtrl.sumTotal >= 10" type="submit" id="submit" value="Check for support in your area">
 </form>
 
-    <!-- tally and display score-->
-    <p class="total-score" ng-cloak>
-      Total: {{qCtrl.sumTotal}} / {{ qCtrl.data.questions.length * 3}}
-    </p>
-    <button ng-click="$event.preventDefault(); qCtrl.selectRandomAnswers()"> Random</button>
+  <!-- tally and display score-->
+  <p class="total-score" ng-cloak>
+    Total: {{qCtrl.sumTotal}} / {{ qCtrl.data.questions.length * 3}}
+  </p>
 
-    <p class="result" ng-class="[{
-      'bg-success': qCtrl.severity == 'mild',
-      'bg-info': qCtrl.severity == 'moderate',
-      'bg-warning': qCtrl.severity == 'moderately-severe',
-      'bg-danger': qCtrl.severity == 'severe' 
-    }]">
-      Your depression severity is : 
-      <span ng-show="phq9Form.$valid">{{qCtrl.severity}}</span>
-      <span ng-show="phq9Form.$invalid">please answer all questions first</span>
-    </p>
-    <small>
-      Depression Severity Scale: 0-4 none,
-      <span class="scale-bg" ng-class="{'bg-success': qCtrl.severity == 'mild'}">5-9 mild</span>,
-      <span class="scale-bg" ng-class="{'bg-info': qCtrl.severity == 'moderate'}">10-14 moderate</span>,
-      <span class="scale-bg" ng-class="{'bg-warning': qCtrl.severity == 'moderately-severe'}">15-19 moderately severe</span>,
-      <span class="scale-bg" ng-class="{'bg-danger': qCtrl.severity == 'severe'}">20-27 severe</span>
-    </small>
+  <p class="result" ng-class="[{
+    'bg-success': qCtrl.severity == 'mild',
+    'bg-info': qCtrl.severity == 'moderate',
+    'bg-warning': qCtrl.severity == 'moderately-severe',
+    'bg-danger': qCtrl.severity == 'severe' 
+  }]">
+    Your depression severity is : 
+    <span ng-show="phq9Form.$valid">{{qCtrl.severity}}</span>
+    <span ng-show="phq9Form.$invalid">please answer all questions first</span>
+  </p>
+  <small>
+    Depression Severity Scale: 0-4 none,
+    <span class="scale-bg" ng-class="{'bg-success': qCtrl.severity == 'mild'}">5-9 mild</span>,
+    <span class="scale-bg" ng-class="{'bg-info': qCtrl.severity == 'moderate'}">10-14 moderate</span>,
+    <span class="scale-bg" ng-class="{'bg-warning': qCtrl.severity == 'moderately-severe'}">15-19 moderately severe</span>,
+    <span class="scale-bg" ng-class="{'bg-danger': qCtrl.severity == 'severe'}">20-27 severe</span>
+  </small>
 
-
-
-    <div data-question-modal parent="qCtrl.modal"></div>
+  <div data-question-modal parent="qCtrl.modal"></div>
 
