@@ -16,7 +16,7 @@
   </div>
 
   <div class="modal-footer">
-    <button type="button" ng-click="dmInstCtrl.submit()">OK</button>
+    <button type="button" ng-click="dmInstCtrl.submit()">Submit</button>
     <button type="button" ng-click="dmInstCtrl.cancel()">Cancel</button>
   </div>
 </div>
@@ -31,10 +31,10 @@
 
   <div class="modal-footer">
     <p>
-      <a href="home">Return to home</a>
+      <a ng-click"dmInstCtrl.return($event, 'home')">Return to home</a>
     </p>
     <p>
-      <a href="" ng-click="dmInstCtrl.ok()">Return to questionnaire</a>
+      <a ng-click="dmInstCtrl.return($event, 'questionnaire')">Return to questionnaire</a>
     </p>
   </div>
 </div>

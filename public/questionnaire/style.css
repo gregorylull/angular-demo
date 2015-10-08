@@ -2,6 +2,10 @@
   margin: 15px 0px;
 }
 
+.question-number {
+  font-weight: bold;
+}
+
 .answer-single {
   margin: 0.5em 0px;
 }
@@ -27,6 +31,11 @@
 .have-answered {
   background-color: #F5FFF5;
 }
+
+.scale-bg.bg-success { font-weight: bolder; }
+.scale-bg.bg-info {font-weight: bolder;}
+.scale-bg.bg-warning {font-weight:bolder;}
+.scale-bg.bg-danger {font-weight:bolder;}
 
 @media screen and (min-width: 480px) {
   .answer-single {

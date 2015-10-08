@@ -75,14 +75,13 @@
       }
     };
 
-    vm.homepage = function () {
-      $state.go('home');
-      $modalInstance.close(vm.selected.item);
-    };
-
     // confirmation / thank you note that a doctor was selected
-    vm.ok = function () {
+    vm.return = function (event, route) {
+      event.preventDefault();
       $modalInstance.close(vm.selected.item);
+      $state.transitionTo(route, {
+        relative: false
+      });
     }
 
     // do nothing

@@ -42,8 +42,8 @@
 
   data.doctors = [
     {n: 'Dr. Nick', p: '555-555-5551'},
-    {n: 'Dr Crusher', p: '555-555-5552'},
-    {n: 'Dr Jones', p: '555-555-5553'}
+    {n: 'Dr. Crusher', p: '555-555-5552'},
+    {n: 'Dr. Jones', p: '555-555-5553'}
   ];
 
   module.exports = data;

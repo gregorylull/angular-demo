@@ -27,16 +27,16 @@
   function QuestionCtrl (GetData) {
     var vm = this;
     
+    //
     // Controller PROPERTIES
+    // 
 
     // access to modal
-    vm.modal = {
-      yes: 'no'
-    };
+    vm.modal = {};
     
-    // score for depression scale
+    // initial values score for depression scale
     vm.sumTotal = 0;
-    vm.severity = null;
+    vm.severity = 'nothing yet...';
 
     // selected answer choices will be saved to this object
     vm.formData = {};
@@ -46,8 +46,10 @@
     GetData.getQuestions(vm.data);
     GetData.getSeverity(vm.data);
 
+    //
     // Controller METHODS
-
+    //
+    
     // anytime a radio button is clicked, it triggers a sum so that scores are constantly updated, similar to the actual site
     vm.sum = sumRadioForm.bind(vm);
 

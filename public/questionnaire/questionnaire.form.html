@@ -14,7 +14,7 @@
         <!-- single question on left-->
           <div class="col-md-6 question-block">
             <p>
-              {{$index+1}}) {{ ::question }}
+              <span class="question-number">{{$index+1}})</span> {{ ::question }}
             </p>
           </div>
           
@@ -43,24 +43,30 @@
 
   </div> <!-- /.question-list -->
 
-  <!-- tally and display score-->
-  <p class="total-score">
-    Total: {{qCtrl.sumTotal}} / {{ qCtrl.data.questions.length * 3}}
-  </p>
-  <p class="result" ng-class="[{
-    'bg-success': qCtrl.severity == 'mild',
-    'bg-info': qCtrl.severity == 'moderate',
-    'bg-warning': qCtrl.severity == 'moderately-severe',
-    'bg-danger': qCtrl.severity == 'severe' 
-  }]">
-    result: {{qCtrl.severity}}
-  </p>
-  <h5>Depression Severity: 0-4 none, 5-9 mild, 10-14 moderate, 15-19 moderately severe, 20-27 severe.</h5>
+    <!-- tally and display score-->
+    <p class="total-score" ng-cloak>
+      Total: {{qCtrl.sumTotal}} / {{ qCtrl.data.questions.length * 3}}
+    </p>
+    <p class="result" ng-class="[{
+      'bg-success': qCtrl.severity == 'mild',
+      'bg-info': qCtrl.severity == 'moderate',
+      'bg-warning': qCtrl.severity == 'moderately-severe',
+      'bg-danger': qCtrl.severity == 'severe' 
+    }]">
+      Your depression severity is : {{qCtrl.severity}}
+    </p>
+    <small>
+      Depression Severity Scale: 0-4 none,
+      <span class="scale-bg" ng-class="{'bg-success': qCtrl.severity == 'mild'}">5-9 mild</span>,
+      <span class="scale-bg" ng-class="{'bg-info': qCtrl.severity == 'moderate'}">10-14 moderate</span>,
+      <span class="scale-bg" ng-class="{'bg-warning': qCtrl.severity == 'moderately-severe'}">15-19 moderately severe</span>,
+      <span class="scale-bg" ng-class="{'bg-danger': qCtrl.severity == 'severe'}">20-27 severe</span>
+    </small>
 
 
-  <!-- submit score -->
-  <input type="submit" id="submit" value="Check for support in your area">
+    <!-- submit score -->
+    <input type="submit" id="submit" value="Check for support in your area">
 
-  <div data-question-modal parent="qCtrl.modal"></div>
+    <div data-question-modal parent="qCtrl.modal"></div>
 
 </form>
