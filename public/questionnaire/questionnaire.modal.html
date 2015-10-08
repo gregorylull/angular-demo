@@ -1,19 +1,40 @@
-<div class="modal-header">
-  These are the available doctors in your area, please select one if you are interested.
+<!-- modal for choosing doctor-->
+<div ng-hide="dmInstCtrl.selectedDoctor">
+  <div class="modal-header">
+    These are the available doctors in your area, please select one if you are interested. <span class="pleaseSelect" ng-show="dmInstCtrl.pleaseSelect"> Oops, please select a doctor or cancel.</span>
+  </div>
+
+  <div class="modal-body">
+    <ul>
+      <li ng-repeat="item in dmInstCtrl.items">
+        <a href="" ng-click="$event.preventDefault(); dmInstCtrl.selected.item = item">{{item.n}}</a>
+      </li>
+    </ul>
+    <p ng-show="dmInstCtrl.selected.item">
+      You have selected {{dmInstCtrl.selected.item.n}}
+    </p>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" ng-click="dmInstCtrl.submit()">OK</button>
+    <button type="button" ng-click="dmInstCtrl.cancel()">Cancel</button>
+  </div>
 </div>
 
-<div class="modal-body">
-  <ul>
-    <li ng-repeat="item in dmInstCtrl.items">
-      <a href="" ng-click="$event.preventDefault(); dmInstCtrl.selected.item = item">{{item.n}}</a>
-    </li>
-  </ul>
-  <p ng-show="dmInstCtrl.selected.item">
-    You have selected {{dmInstCtrl.selected.item.n}}, phone number: {{dmInstCtrl.selected.item.p}}
-  </p>
-</div>
+<!-- confirmation of doctor selection -->
+<div ng-show="dmInstCtrl.selectedDoctor">
+  <div class="modal-header"></div>
 
-<div class="modal-footer">
-  <button type="button" ng-click="dmInstCtrl.ok()">OK</button>
-  <button type="button" ng-click="dmInstCtrl.cancel()">Cancel</button>
+  <div class="modal-body">
+    Thank you, please contact {{dmInstCtrl.selected.item.n}} at {{dmInstCtrl.selected.item.p}}
+  </div>
+
+  <div class="modal-footer">
+    <p>
+      <a href="home">Return to home</a>
+    </p>
+    <p>
+      <a href="" ng-click="dmInstCtrl.ok()">Return to questionnaire</a>
+    </p>
+  </div>
 </div>

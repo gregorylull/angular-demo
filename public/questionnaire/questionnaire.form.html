@@ -1,43 +1,58 @@
 <h4>Answer these questions please</h4>
-<form name="phq9Form" ng-submit="qCtrl.submit($form, qCtrl.sumTotal)">
+<form name="phq9Form" ng-submit="qCtrl.submit(phq9Form, qCtrl.sumTotal)">
   
   <div class="question-list">
-    <!-- each question-->
-    <div class="row question-answers-block" ng-repeat="question in qCtrl.data.questions">
-      <!-- question on left-->
-      <div class="col-md-6 question-block">
-        <p>
-          {{ ::question }}
-        </p>
-      </div>
+    <!-- each question + answers block -->
+    <div ng-repeat="question in qCtrl.data.questions">
+
+      <div class="row question-answers-block"
+        ng-class="[{
+        'need-answer': phq9Form['parent' + $index].$invalid,
+        'have-answered': phq9Form['parent' + $index].$valid
+        }]">
+
+        <!-- single question on left-->
+          <div class="col-md-6 question-block">
+            <p>
+              {{$index+1}}) {{ ::question }}
+            </p>
+          </div>
+          
+          <!-- answers on right -->
+          <div class="col-md-6 answers-block">
+            <div class="row answer-single" ng-repeat="answer in qCtrl.data.answers">
+              <label>
+                <input
+                  required
+                  type="radio"
+                  name="{{ 'parent' + $parent.$index}}"
+                  ng-model="qCtrl.formData['answer' + $parent.$index]"
+                  ng-value="{{ ::answer[1] }}"
+                  ng-change="qCtrl.processForm(qCtrl.formData)"
+                >
+
+                {{ ::answer[0]}}
+
+              </label>
+            </div> <!-- / ng repeat of answer-single-->
+          </div> <!-- /.answers-block -->
       
-      <!-- answer on right -->
-      <div class="col-md-6 answers-block">
-        <div class="row answer-single" ng-repeat="answer in qCtrl.data.answers">
-          <label>
-            <input
-              required
-              type="radio"
-              name="{{ ::('answer' + $parent.$index)}}"
-              ng-model="qCtrl.formData['answer' + $parent.$index]"
-              ng-value="{{ ::answer[1] }}"
-              ng-change="qCtrl.processForm(qCtrl.formData)"
-            >
+      </div> <!-- /.question-block -->
 
-            {{ ::answer[0]}}
+    </div> <!-- /.row ng repeat-->
 
-          </label>
-        </div> <!-- / ng repeat of answer-single-->
-      </div> <!-- /.answers-block -->
-
-    </div> <!-- /.question-block -->
   </div> <!-- /.question-list -->
 
   <!-- tally and display score-->
-  <p>
-    Total: {{qCtrl.sumTotal}} / {{ ::(qCtrl.data.questions.length * 3)}}
+  <p class="total-score">
+    Total: {{qCtrl.sumTotal}} / {{ qCtrl.data.questions.length * 3}}
   </p>
-  <p>
+  <p class="result" ng-class="[{
+    'bg-success': qCtrl.severity == 'mild',
+    'bg-info': qCtrl.severity == 'moderate',
+    'bg-warning': qCtrl.severity == 'moderately-severe',
+    'bg-danger': qCtrl.severity == 'severe' 
+  }]">
     result: {{qCtrl.severity}}
   </p>
   <h5>Depression Severity: 0-4 none, 5-9 mild, 10-14 moderate, 15-19 moderately severe, 20-27 severe.</h5>

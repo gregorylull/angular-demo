@@ -52,20 +52,40 @@
   }
 
   // per the documentation for ui.router, this controls the logic of the modal window once it pops open
-  function DoctorModalInstanceCtrl ($modalInstance, items) {
+  function DoctorModalInstanceCtrl ($state, $modalInstance, items) {
 
     var vm = this;
     vm.items = items;
+
+    // this property controls which html block is showing in questionnaire.modal.html based on ng-show/ng-hide
+    vm.selectedDoctor = false;
+    vm.pleaseSelect = false;
 
     vm.selected = {
       item: false
     };
 
-    vm.ok = function () {
-      // here we can send the data back to the server
+    // select doctor
+    vm.submit = function () {
+      // hide doctor selection block
+      if (vm.selected.item) {
+        vm.selectedDoctor = true;
+      } else {
+        vm.pleaseSelect = true;
+      }
+    };
+
+    vm.homepage = function () {
+      $state.go('home');
       $modalInstance.close(vm.selected.item);
     };
 
+    // confirmation / thank you note that a doctor was selected
+    vm.ok = function () {
+      $modalInstance.close(vm.selected.item);
+    }
+
+    // do nothing
     vm.cancel = function () {
       $modalInstance.dismiss('cancel');
     };

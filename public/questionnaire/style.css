@@ -1,3 +1,35 @@
-.question-block {
+.question-answers-block {
   margin: 15px 0px;
+}
+
+.answer-single {
+  margin: 0.5em 0px;
+}
+
+.pleaseSelect {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: red;
+}
+
+.total-score {
+  font-size: 1.5em;
+}
+
+.result {
+  font-size: 1.5em;
+}
+
+.need-answer {
+  background-color: #FFF0F5;
+}
+
+.have-answered {
+  background-color: #F5FFF5;
+}
+
+@media screen and (min-width: 480px) {
+  .answer-single {
+    margin: 0em 0em;
+  }
 }

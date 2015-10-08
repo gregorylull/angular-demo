@@ -33,12 +33,14 @@
   
    // since this is a single page application, we just need to send the index page
    app.get('/', function (request, response) {
-    response.sendFile('public/index.html');
+    console.log('to index triggered');
+    response.sendFile( __dirname + '/public/index.html');
    });
 
   // catch all and send to index
-  app.use("*",function(req,res){
-    res.sendFile('public/index.html');
+  app.get("*", function (request,response) {
+    console.log('catch all triggered');
+    response.redirect('/');
   });
 
    // start application
