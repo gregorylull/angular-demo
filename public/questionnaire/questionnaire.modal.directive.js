@@ -77,6 +77,7 @@
 
     // confirmation / thank you note that a doctor was selected
     vm.return = function (event, route) {
+      console.log('route to: ', route);
       event.preventDefault();
       $modalInstance.close(vm.selected.item);
       $state.transitionTo(route, {

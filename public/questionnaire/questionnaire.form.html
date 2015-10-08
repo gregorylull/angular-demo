@@ -1,5 +1,7 @@
 <h4>Answer these questions please</h4>
-<form name="phq9Form" ng-submit="qCtrl.submit(phq9Form, qCtrl.sumTotal)">
+<form class="form" name="phq9Form" ng-submit="qCtrl.submit(phq9Form, qCtrl.sumTotal)">
+
+  <button ng-click="$event.preventDefault(); qCtrl.selectRandomAnswers()"> Random</button>
   
   <div class="question-list">
     <!-- each question + answers block -->
@@ -43,17 +45,25 @@
 
   </div> <!-- /.question-list -->
 
+  <!-- submit score -->
+  <input type="submit" id="submit" value="Check for support in your area">
+</form>
+
     <!-- tally and display score-->
     <p class="total-score" ng-cloak>
       Total: {{qCtrl.sumTotal}} / {{ qCtrl.data.questions.length * 3}}
     </p>
+    <button ng-click="$event.preventDefault(); qCtrl.selectRandomAnswers()"> Random</button>
+
     <p class="result" ng-class="[{
       'bg-success': qCtrl.severity == 'mild',
       'bg-info': qCtrl.severity == 'moderate',
       'bg-warning': qCtrl.severity == 'moderately-severe',
       'bg-danger': qCtrl.severity == 'severe' 
     }]">
-      Your depression severity is : {{qCtrl.severity}}
+      Your depression severity is : 
+      <span ng-show="phq9Form.$valid">{{qCtrl.severity}}</span>
+      <span ng-show="phq9Form.$invalid">please answer all questions first</span>
     </p>
     <small>
       Depression Severity Scale: 0-4 none,
@@ -64,9 +74,6 @@
     </small>
 
 
-    <!-- submit score -->
-    <input type="submit" id="submit" value="Check for support in your area">
 
     <div data-question-modal parent="qCtrl.modal"></div>
 
-</form>

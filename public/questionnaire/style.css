@@ -25,11 +25,11 @@
 }
 
 .need-answer {
-  background-color: #FFF0F5;
+  background-color: #FFDDDD;
 }
 
 .have-answered {
-  background-color: #F5FFF5;
+  background-color: #CCFFCC;
 }
 
 .scale-bg.bg-success { font-weight: bolder; }
@@ -41,4 +41,13 @@
   .answer-single {
     margin: 0em 0em;
   }
+}
+
+.form {
+  position: relative;
+}
+
+.right {
+  position: absolute;
+  right: 0;
 }

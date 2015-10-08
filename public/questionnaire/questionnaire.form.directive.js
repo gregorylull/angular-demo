@@ -20,11 +20,14 @@
       scope: {},
       controller: QuestionCtrl,
       controllerAs: 'qCtrl',
-      templateUrl: 'questionnaire/questionnaire.form.html'
+      templateUrl: 'questionnaire/questionnaire.form.html',
+      link: function (scope, el, attr, qCtrl) {
+
+      }
     }
   });
 
-  function QuestionCtrl (GetData) {
+  function QuestionCtrl ($scope, GetData) {
     var vm = this;
     
     //
@@ -49,7 +52,7 @@
     //
     // Controller METHODS
     //
-    
+
     // anytime a radio button is clicked, it triggers a sum so that scores are constantly updated, similar to the actual site
     vm.sum = sumRadioForm.bind(vm);
 
@@ -62,10 +65,22 @@
     // when the submit button is clicked, it will send the score to the backend, and retrieve a list of doctors displayed as a modal
     vm.submit = submit.bind(vm);
 
+    // for testing purposes, selects random answers, aka using two way binding create answers on model: qCtrl.formData['answer' + $parent.$index]
+    vm.selectRandomAnswers = selectRandomAnswers.bind(vm);
+
+    vm.digest = function () {
+      // $scope.apply();
+    };
 
   }
   // dependencies
-  QuestionCtrl.$inject = ['GetData'];
+  QuestionCtrl.$inject = ['$scope', 'GetData'];
+
+
+
+/*-----------------------------------------------------------------------------
+    Controller METHOD defintions
+-----------------------------------------------------------------------------*/
 
   // process form does two things, it calculates sum, then based on the sum it calculates severity
   function processForm (form) {
@@ -100,9 +115,26 @@
 
   // if form is valid, open up a modal window with doctor names
   function submit (form, score) {
-
     // this binding is on the child directive: questionModal
     this.modal.open(score);
+  }
+
+  // select random answers
+  function selectRandomAnswers (form) {
+    var vm = this;
+    var questions = vm.data.questions;
+    console.log(vm.data);
+    for (var i = 0; i < questions.length; i++) {
+      var randomAnswer = Math.floor(Math.random() * vm.data.answers.length);
+      var answerValue = vm.data.answers[randomAnswer][1];
+
+      vm.formData['answer' + i] = parseInt(answerValue);
+
+      console.log(vm.formData);
+    }
+
+    vm.digest();
+    vm.processForm(vm.formData);
   }
 
 })();
