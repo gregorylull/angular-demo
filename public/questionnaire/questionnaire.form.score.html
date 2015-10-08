@@ -1,0 +1,26 @@
+<!-- tally and display score-->
+<p class="total-score" ng-cloak>
+  Total: {{scoreCtrl.sumTotal}} / {{ scoreCtrl.length * 3}}
+</p>
+
+<button ng-click="$event.preventDefault(); scoreCtrl.selectRandomAnswers()"> Random</button>
+
+<p class="result" ng-class="[{
+  'bg-success': scoreCtrl.severity == 'mild',
+  'bg-info': scoreCtrl.severity == 'moderate',
+  'bg-warning': scoreCtrl.severity == 'moderately-severe',
+  'bg-danger': scoreCtrl.severity == 'severe' 
+}]">
+  Your depression severity is : 
+  {{scoreCtrl.form}}
+  <span ng-show="scoreCtrl.form.$valid">{{scoreCtrl.severity}}</span>
+  <span ng-show="scoreCtrl.form.$invalid">please answer all questions first</span>
+</p>
+
+<small>
+  Depression Severity Scale: 0-4 none,
+  <span class="scale-bg" ng-class="{'bg-success': scoreCtrl.severity == 'mild'}">5-9 mild</span>,
+  <span class="scale-bg" ng-class="{'bg-info': scoreCtrl.severity == 'moderate'}">10-14 moderate</span>,
+  <span class="scale-bg" ng-class="{'bg-warning': scoreCtrl.severity == 'moderately-severe'}">15-19 moderately severe</span>,
+  <span class="scale-bg" ng-class="{'bg-danger': scoreCtrl.severity == 'severe'}">20-27 severe</span>
+</small>
